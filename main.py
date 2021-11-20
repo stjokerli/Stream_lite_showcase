@@ -438,7 +438,7 @@ feature_list=['MiscVal',
 
 
 
-image = Image.open('.\image\header.png')
+image = Image.open('./image/header.png')
 
 st.image(image,use_column_width=True)
 
