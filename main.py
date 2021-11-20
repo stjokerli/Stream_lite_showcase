@@ -8,6 +8,11 @@ import catboost
 import matplotlib.pyplot as pl
 import shap
 
+# path="../020_code/model/"
+path="./model/"
+
+pcs_file=path+"pca.pkl"
+cat_file=path+"model.pkl"
 
 
 # define categorical values
@@ -262,7 +267,7 @@ def FeatureEngineering(df,pca=None):
     return df_study,col_FE_num,col_FE_cat
 
 
-pca = pickle.load(open("../020_code/model/pca.pkl",'rb'))
+pca = pickle.load(open(pca_file,'rb'))
 
 def pca_transform(df_input,pca_model):
   
@@ -613,7 +618,7 @@ st.dataframe(df_test_IC[df_test_IC.columns[::-1]])
 
 df_test_IC_selection=df_test_IC[feature_list]
 
-model = pickle.load(open("../020_code/model/model.pkl",'rb'))
+model = pickle.load(open(cat_file,'rb'))
 
 
 df_test_IC['Predicted_Unit_Price']=model.predict(df_test_IC_selection)
