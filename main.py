@@ -8,11 +8,16 @@ import catboost
 import matplotlib.pyplot as pl
 import shap
 
-# path="../020_code/model/"
-path="./model/"
+# model_path="../020_code/model/"
+model_path="./model/"
 
-pcs_file=path+"pca.pkl"
-cat_file=path+"model.pkl"
+pca_file=model_path+"pca.pkl"
+cat_file=model_path+"model.pkl"
+
+# data_path="../010_data/"
+
+data_path="./010_data/"
+train_data=data_path+"train_after_treatment.csv"
 
 
 # define categorical values
@@ -453,7 +458,7 @@ st.write ("""
 # 1461,20,RH,80,11622,Pave,NA,Reg,Lvl,AllPub,Inside,Gtl,NAmes,Feedr,Norm,1Fam,1Story,5,6,1961,1961,Gable,CompShg,VinylSd,VinylSd,None,0,TA,TA,CBlock,TA,TA,No,Rec,468,LwQ,144,270,882,GasA,TA,Y,SBrkr,896,0,0,896,0,0,1,0,2,1,TA,5,Typ,0,NA,Attchd,1961,Unf,1,730,TA,TA,Y,140,0,0,0,120,0,NA,MnPrv,NA,0,6,2010,WD,Normal
 
 
-df_train_after_treatment=pd.read_csv("../010_data/train_after_treatment.csv")
+df_train_after_treatment=pd.read_csv(train_data)
 
 st.sidebar.header('Select to filter the data')
 
