@@ -641,13 +641,14 @@ st.dataframe(df_test_IC[df_test_IC.columns[::-1]])
 explainer = shap.TreeExplainer(model)
 shap_values = explainer.shap_values(df_test_IC_selection)
 
-st.set_option('deprecation.showPyplotGlobalUse', False)
+# st.set_option('deprecation.showPyplotGlobalUse', False)
 
 st.header("SHAP Analysis on Prediction Result")
 
 for i in range(df_test_IC.shape[0]):
     st.write("Input Record: "+str(i))
-    st.pyplot(shap.force_plot(explainer.expected_value, shap_values[i,:], df_test_IC_selection.iloc[i,:],matplotlib=True,figsize=(20, 5),text_rotation=45,contribution_threshold=0.025),
+    p=shap.force_plot(explainer.expected_value, shap_values[i,:], df_test_IC_selection.iloc[i,:],matplotlib=True,figsize=(20, 5),text_rotation=45,contribution_threshold=0.025)
+    st.pyplot(fig=p,
                 bbox_inches='tight',dpi=300,pad_inches=0)
     pl.clf()
     
